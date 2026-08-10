@@ -43,4 +43,4 @@ app-example
 /android
 
 # Claude Code local settings
-.claude/
+.claude
