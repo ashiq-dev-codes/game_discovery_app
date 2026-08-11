@@ -9,6 +9,10 @@ const SplashPage = () => {
       <Image style={splashPageStyles.image} source={AppImages.splashImg1} />
 
       <Text style={splashPageStyles.text}>StoryVerse</Text>
+
+      <View style={splashPageStyles.button}>
+        <Text style={splashPageStyles.buttonText}>Start</Text>
+      </View>
     </View>
   );
 };

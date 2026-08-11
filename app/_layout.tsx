@@ -8,8 +8,15 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
-    [AppFonts.oleoScriptSwashCapsBold.name]: AppFonts.oleoScriptSwashCapsBold.path,
-    [AppFonts.oleoScriptSwashCapsRegular.name]: AppFonts.oleoScriptSwashCapsRegular.path,
+    // Oleo Script Swash Caps
+    [AppFonts.oleoScriptSwashCapsBold.name]:
+      AppFonts.oleoScriptSwashCapsBold.path,
+    [AppFonts.oleoScriptSwashCapsRegular.name]:
+      AppFonts.oleoScriptSwashCapsRegular.path,
+
+    // Nunito
+    [AppFonts.nunitoBold.name]: AppFonts.nunitoBold.path,
+    [AppFonts.nunitoRegular.name]: AppFonts.nunitoRegular.path,
   });
 
   useEffect(() => {

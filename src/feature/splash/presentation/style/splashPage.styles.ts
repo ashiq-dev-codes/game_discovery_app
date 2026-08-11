@@ -21,7 +21,23 @@ const splashPageStyles = StyleSheet.create({
         paddingHorizontal: 20,
         color: AppColors.whiteColor,
         fontFamily: AppFonts.oleoScriptSwashCapsRegular.name,
-    }
+    },
+    button: {
+        height: 60,
+        width: 262,
+        bottom: 85,
+        borderRadius: 16,
+        alignItems: "center",
+        position: "absolute",
+        justifyContent: "center",
+        backgroundColor: AppColors.primaryColor,
+    },
+    buttonText: {
+        fontSize: 32,
+        fontWeight: "bold",
+        color: AppColors.whiteColor,
+        fontFamily: AppFonts.nunitoBold.name,
+    },
 });
 
 export default splashPageStyles;

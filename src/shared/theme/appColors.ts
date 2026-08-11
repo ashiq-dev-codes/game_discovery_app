@@ -2,6 +2,7 @@ class AppColors {
     // Base Colors
     static whiteColor = "#FFFFFF";
     static blackColor = "#000000";
+    static primaryColor = "#2563EB";
 
     // Accent Colors
     static accent100 = "#FCFCFD";
