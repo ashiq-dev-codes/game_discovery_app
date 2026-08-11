@@ -1,3 +1,4 @@
+import AppFonts from "@/src/shared/path/appFonts";
 import AppColors from "@/src/shared/theme/appColors";
 import { StyleSheet } from "react-native";
 
@@ -17,9 +18,9 @@ const splashPageStyles = StyleSheet.create({
     text: {
         fontSize: 80,
         position: "absolute",
-        fontWeight: "regular",
         paddingHorizontal: 20,
         color: AppColors.whiteColor,
+        fontFamily: AppFonts.oleoScriptSwashCapsRegular.name,
     }
 });
 
