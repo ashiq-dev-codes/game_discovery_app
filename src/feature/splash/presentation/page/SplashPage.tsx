@@ -1,66 +1,71 @@
 import AppImages from "@/src/shared/path/appImages";
-import React, { useEffect } from "react";
-import { Image, Text, View } from "react-native";
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-  withRepeat,
-  withSequence,
-  Easing,
-} from "react-native-reanimated";
 import { router } from "expo-router";
+import React, { useEffect } from "react";
+import { Image, Pressable, Text } from "react-native";
+import Animated, {
+  Easing,
+  useAnimatedStyle,
+  useSharedValue,
+  withDelay,
+  withSequence,
+  withTiming,
+} from "react-native-reanimated";
 import splashPageStyles from "../style/splashPage.styles";
 
 const SplashPage = () => {
-  const fadeAnim = useSharedValue(0);
-  const scaleAnim = useSharedValue(0.8);
-  const pulseAnim = useSharedValue(1);
+  const textOpacity = useSharedValue(0);
+  const textTranslateY = useSharedValue(30);
+  const buttonOpacity = useSharedValue(0);
+  const buttonScale = useSharedValue(0.9);
 
   useEffect(() => {
-    // Fade in and scale up animation
-    fadeAnim.value = withTiming(1, { duration: 800, easing: Easing.out(Easing.exp) });
-    scaleAnim.value = withTiming(1, { duration: 800, easing: Easing.out(Easing.back(1.5)) });
-
-    // Pulse animation for the button
-    pulseAnim.value = withRepeat(
-      withSequence(
-        withTiming(1.05, { duration: 800 }),
-        withTiming(1, { duration: 800 })
-      ),
-      -1,
-      true
+    // Text: Fade in + slide up
+    textOpacity.value = withDelay(300, withTiming(1, { duration: 600 }));
+    textTranslateY.value = withDelay(
+      300,
+      withTiming(0, { duration: 600, easing: Easing.out(Easing.cubic) }),
     );
 
-    // Navigate after 3 seconds
-    const timer = setTimeout(() => {
-      router.replace("/home");
-    }, 3000);
-
-    return () => clearTimeout(timer);
+    // Button: Fade in + gentle pulse
+    buttonOpacity.value = withDelay(800, withTiming(1, { duration: 500 }));
+    buttonScale.value = withDelay(
+      800,
+      withSequence(
+        withTiming(1, { duration: 500 }),
+        withTiming(1.05, { duration: 800 }),
+        withTiming(1, { duration: 800 }),
+      ),
+    );
   }, []);
 
-  const textAnimatedStyle = useAnimatedStyle(() => ({
-    opacity: fadeAnim.value,
-    transform: [{ scale: scaleAnim.value }],
+  const handleStartPress = () => {
+    router.replace("/home");
+  };
+
+  const textStyle = useAnimatedStyle(() => ({
+    opacity: textOpacity.value,
+    transform: [{ translateY: textTranslateY.value }],
   }));
 
-  const buttonAnimatedStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: pulseAnim.value }],
+  const buttonStyle = useAnimatedStyle(() => ({
+    opacity: buttonOpacity.value,
+    transform: [{ scale: buttonScale.value }],
   }));
 
   return (
-    <View style={splashPageStyles.container}>
+    <Animated.View style={splashPageStyles.container}>
       <Image style={splashPageStyles.image} source={AppImages.splashImg1} />
 
-      <Animated.Text style={[splashPageStyles.text, textAnimatedStyle]}>
+      <Animated.Text style={[splashPageStyles.text, textStyle]}>
         StoryVerse
       </Animated.Text>
 
-      <Animated.View style={[splashPageStyles.button, buttonAnimatedStyle]}>
-        <Text style={splashPageStyles.buttonText}>Start</Text>
+      <Animated.View style={[splashPageStyles.button, buttonStyle]}>
+        <Pressable onPress={handleStartPress}>
+          <Text style={splashPageStyles.buttonText}>Start</Text>
+        </Pressable>
       </Animated.View>
-    </View>
+    </Animated.View>
   );
 };
 
