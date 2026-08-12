@@ -7,6 +7,7 @@ import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withDelay,
+  withRepeat,
   withSequence,
   withTiming,
 } from "react-native-reanimated";
@@ -26,14 +27,23 @@ const SplashPage = () => {
       withTiming(0, { duration: 600, easing: Easing.out(Easing.cubic) }),
     );
 
-    // Button: Fade in + gentle pulse
+    // Button: Fade in + continuous pulse
     buttonOpacity.value = withDelay(800, withTiming(1, { duration: 500 }));
     buttonScale.value = withDelay(
       800,
       withSequence(
         withTiming(1, { duration: 500 }),
-        withTiming(1.05, { duration: 800 }),
-        withTiming(1, { duration: 800 }),
+        withRepeat(
+          withSequence(
+            withTiming(1.05, {
+              duration: 800,
+              easing: Easing.inOut(Easing.ease),
+            }),
+            withTiming(1, { duration: 800, easing: Easing.inOut(Easing.ease) }),
+          ),
+          -1,
+          true,
+        ),
       ),
     );
   }, []);
