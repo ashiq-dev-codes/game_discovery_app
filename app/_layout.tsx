@@ -15,8 +15,14 @@ export default function RootLayout() {
       AppFonts.oleoScriptSwashCapsRegular.path,
 
     // Nunito
-    [AppFonts.nunitoBold.name]: AppFonts.nunitoBold.path,
+    [AppFonts.nunitoExtraLight.name]: AppFonts.nunitoExtraLight.path,
+    [AppFonts.nunitoLight.name]: AppFonts.nunitoLight.path,
     [AppFonts.nunitoRegular.name]: AppFonts.nunitoRegular.path,
+    [AppFonts.nunitoMedium.name]: AppFonts.nunitoMedium.path,
+    [AppFonts.nunitoSemiBold.name]: AppFonts.nunitoSemiBold.path,
+    [AppFonts.nunitoBold.name]: AppFonts.nunitoBold.path,
+    [AppFonts.nunitoExtraBold.name]: AppFonts.nunitoExtraBold.path,
+    [AppFonts.nunitoBlack.name]: AppFonts.nunitoBlack.path,
   });
 
   useEffect(() => {

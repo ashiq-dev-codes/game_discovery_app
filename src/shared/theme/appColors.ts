@@ -66,6 +66,10 @@ class AppColors {
     static warning950 = "#4E1D09";
 
     // Add secondary and other colors similarly...
+
+    // Gray color shades
+    static darkGrayColor = "#4F4F4F";
+    static lightGrayColor = "#F2F2F2";
 }
 
 export default AppColors;
