@@ -66,14 +66,16 @@ const SplashPage = () => {
     <Animated.View style={splashPageStyles.container}>
       <Image style={splashPageStyles.image} source={AppImages.splashImg1} />
 
-      <Animated.Text style={[splashPageStyles.text, textStyle]}>
-        StoryVerse
-      </Animated.Text>
+      <Animated.View style={splashPageStyles.body}>
+        <Animated.Text style={[splashPageStyles.text, textStyle]}>
+          StoryVerse
+        </Animated.Text>
 
-      <Animated.View style={[splashPageStyles.button, buttonStyle]}>
-        <Pressable onPress={handleStartPress}>
-          <Text style={splashPageStyles.buttonText}>Start</Text>
-        </Pressable>
+        <Animated.View style={[splashPageStyles.button, buttonStyle]}>
+          <Pressable onPress={handleStartPress}>
+            <Text style={splashPageStyles.buttonText}>Start</Text>
+          </Pressable>
+        </Animated.View>
       </Animated.View>
     </Animated.View>
   );
