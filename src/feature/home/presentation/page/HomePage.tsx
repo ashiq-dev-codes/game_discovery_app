@@ -58,8 +58,11 @@ const HomePage = () => {
 
         {/* Home Popular */}
         <View style={homePagestyles.popularBox}>
-          <Text style={homePagestyles.popularBoxHeaderTitle}>Popular</Text>
-          <Text style={homePagestyles.popularBoxHeaderSeeAll}>See All</Text>
+          <View style={homePagestyles.popularBoxHeader}>
+            <Text style={homePagestyles.popularBoxHeaderTitle}>Popular</Text>
+            <Text style={homePagestyles.popularBoxHeaderSeeAll}>See All</Text>
+          </View>
+          <View style={homePagestyles.popularBoxContent}></View>
         </View>
 
         <Text>HomePage</Text>

@@ -70,6 +70,9 @@ class AppColors {
     // Gray color shades
     static darkGrayColor = "#4F4F4F";
     static lightGrayColor = "#F2F2F2";
+
+    // Blue color shades
+    static skyBlueColor = "#5893D8";
 }
 
 export default AppColors;
