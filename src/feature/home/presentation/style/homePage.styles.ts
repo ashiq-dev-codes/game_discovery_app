@@ -11,7 +11,7 @@ const homePagestyles = StyleSheet.create({
         paddingVertical: 5,
         alignItems: "center",
         flexDirection: "row",
-        paddingHorizontal: 30,
+        marginHorizontal: 30,
         backgroundColor: "white",
         justifyContent: "space-between",
     },
@@ -30,13 +30,17 @@ const homePagestyles = StyleSheet.create({
         height: 48,
         borderRadius: 8,
     },
+
+    // Home Heading
     homeHeading: {
         fontSize: 33,
         marginTop: 15,
         marginHorizontal: 20,
         color: AppColors.blackColor,
-        fontFamily: AppFonts.nunitoBlack.name,
+        fontFamily: AppFonts.poppinsBold.name,
     },
+
+    // Home Search Bar
     searchBar: {
         marginTop: 15,
         borderRadius: 25,
@@ -53,8 +57,19 @@ const homePagestyles = StyleSheet.create({
         padding: 0,
         fontSize: 16,
         color: AppColors.blackColor,
-        fontFamily: AppFonts.nunitoBold.name,
+        fontFamily: AppFonts.poppinsMedium.name,
     },
+
+    // Home Popular Section
+    popularBox: {
+        marginTop: 20,
+        marginHorizontal: 30,
+        alignItems: "center",
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+    popularBoxHeaderTitle: {},
+    popularBoxHeaderSeeAll: {},
 });
 
 export default homePagestyles;

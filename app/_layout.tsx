@@ -23,6 +23,17 @@ export default function RootLayout() {
     [AppFonts.nunitoBold.name]: AppFonts.nunitoBold.path,
     [AppFonts.nunitoExtraBold.name]: AppFonts.nunitoExtraBold.path,
     [AppFonts.nunitoBlack.name]: AppFonts.nunitoBlack.path,
+
+    // Poppins
+    [AppFonts.poppinsThin.name]: AppFonts.poppinsThin.path,
+    [AppFonts.poppinsExtraLight.name]: AppFonts.poppinsExtraLight.path,
+    [AppFonts.poppinsLight.name]: AppFonts.poppinsLight.path,
+    [AppFonts.poppinsRegular.name]: AppFonts.poppinsRegular.path,
+    [AppFonts.poppinsMedium.name]: AppFonts.poppinsMedium.path,
+    [AppFonts.poppinsSemiBold.name]: AppFonts.poppinsSemiBold.path,
+    [AppFonts.poppinsBold.name]: AppFonts.poppinsBold.path,
+    [AppFonts.poppinsExtraBold.name]: AppFonts.poppinsExtraBold.path,
+    [AppFonts.poppinsBlack.name]: AppFonts.poppinsBlack.path,
   });
 
   useEffect(() => {

@@ -20,9 +20,7 @@ const HomePage = () => {
         {/* Home AppBar */}
         <View style={homePagestyles.appBar}>
           <View style={homePagestyles.appBarHeadingBox}>
-            <Text style={homePagestyles.appBarHeadingBoxText}>
-              StoryVerse
-            </Text>
+            <Text style={homePagestyles.appBarHeadingBoxText}>StoryVerse</Text>
           </View>
           <Image
             style={homePagestyles.appBarImage}
@@ -57,6 +55,12 @@ const HomePage = () => {
             <Ionicons name="search-outline" size={20} color="#5B96E1" />
           )}
         </Pressable>
+
+        {/* Home Popular */}
+        <View style={homePagestyles.popularBox}>
+          <Text style={homePagestyles.popularBoxHeaderTitle}>Popular</Text>
+          <Text style={homePagestyles.popularBoxHeaderSeeAll}>See All</Text>
+        </View>
 
         <Text>HomePage</Text>
       </SafeAreaView>
