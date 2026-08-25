@@ -26,10 +26,15 @@ const splashPageStyles = StyleSheet.create({
         paddingHorizontal: 20,
         justifyContent: "space-between",
     },
-    text: {
+    textWrapper: {
         flex: 1,
+        width: "100%",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    text: {
         fontSize: 80,
-        textAlignVertical: "center",
+        textAlign: "center",
         color: AppColors.whiteColor,
         fontFamily: AppFonts.oleoScriptSwashCapsRegular.name,
     },
