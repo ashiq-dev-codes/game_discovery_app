@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import React, { useRef, useState } from "react";
 import { Image, Pressable, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import HomePopularSection from "../components/HomePopularSection";
 import homePagestyles from "../style/homePage.styles";
 
 const HomePage = () => {
@@ -57,13 +58,7 @@ const HomePage = () => {
         </Pressable>
 
         {/* Home Popular */}
-        <View style={homePagestyles.popularBox}>
-          <View style={homePagestyles.popularBoxHeader}>
-            <Text style={homePagestyles.popularBoxHeaderTitle}>Popular</Text>
-            <Text style={homePagestyles.popularBoxHeaderSeeAll}>See All</Text>
-          </View>
-          <View style={homePagestyles.popularBoxContent}></View>
-        </View>
+        <HomePopularSection />
 
         <Text>HomePage</Text>
       </SafeAreaView>

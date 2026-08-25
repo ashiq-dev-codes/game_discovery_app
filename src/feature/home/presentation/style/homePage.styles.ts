@@ -59,30 +59,6 @@ const homePagestyles = StyleSheet.create({
         color: AppColors.blackColor,
         fontFamily: AppFonts.poppinsMedium.name,
     },
-
-    // Home Popular Section
-    popularBox: {
-        marginTop: 20,
-        marginHorizontal: 30,
-    },
-    popularBoxHeader: {
-        alignItems: "center",
-        flexDirection: "row",
-        justifyContent: "space-between",
-    },
-    popularBoxHeaderTitle: {
-        fontSize: 24,
-        color: AppColors.blackColor,
-        fontFamily: AppFonts.poppinsBold.name,
-    },
-    popularBoxHeaderSeeAll: {
-        fontSize: 16,
-        color: AppColors.skyBlueColor,
-        fontFamily: AppFonts.nunitoBold.name,
-    },
-    popularBoxContent: {
-        marginTop: 10,
-    },
 });
 
 export default homePagestyles;
