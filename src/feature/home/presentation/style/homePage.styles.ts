@@ -1,3 +1,4 @@
+import AppFonts from "@/src/shared/path/appFonts";
 import AppColors from "@/src/shared/theme/appColors";
 import { StyleSheet } from "react-native";
 
@@ -7,8 +8,7 @@ const homePagestyles = StyleSheet.create({
         backgroundColor: "white",
     },
     appBar: {
-        height: 52,
-        paddingVertical: 15,
+        paddingVertical: 5,
         alignItems: "center",
         flexDirection: "row",
         paddingHorizontal: 30,
@@ -23,12 +23,38 @@ const homePagestyles = StyleSheet.create({
     appBarHeadingBoxText: {
         fontSize: 16,
         color: AppColors.darkGrayColor,
+        fontFamily: AppFonts.nunitoBold.name,
     },
     appBarImage: {
         width: 48,
         height: 48,
         borderRadius: 8,
-    }
+    },
+    homeHeading: {
+        fontSize: 33,
+        marginTop: 15,
+        marginHorizontal: 20,
+        color: AppColors.blackColor,
+        fontFamily: AppFonts.nunitoBlack.name,
+    },
+    searchBar: {
+        marginTop: 15,
+        borderRadius: 25,
+        paddingVertical: 12,
+        alignItems: "center",
+        flexDirection: "row",
+        marginHorizontal: 20,
+        paddingHorizontal: 16,
+        justifyContent: "space-between",
+        backgroundColor: AppColors.lightGrayColor,
+    },
+    searchInput: {
+        flex: 1,
+        padding: 0,
+        fontSize: 16,
+        color: AppColors.blackColor,
+        fontFamily: AppFonts.nunitoBold.name,
+    },
 });
 
 export default homePagestyles;
