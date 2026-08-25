@@ -1,12 +1,17 @@
 import AppImages from "@/src/shared/path/appImages";
 import { Ionicons } from "@expo/vector-icons";
-import React, { useState } from "react";
-import { Image, Text, TextInput, View } from "react-native";
+import React, { useRef, useState } from "react";
+import { Image, Pressable, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import homePagestyles from "../style/homePage.styles";
 
 const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const inputRef = useRef<TextInput>(null);
+
+  const handleClearSearch = () => {
+    setSearchQuery("");
+  };
 
   return (
     <SafeAreaView style={homePagestyles.container} edges={["top"]}>
@@ -27,16 +32,27 @@ const HomePage = () => {
       </Text>
 
       {/* Home Search Bar */}
-      <View style={homePagestyles.searchBar}>
+      <Pressable
+        style={homePagestyles.searchBar}
+        onPress={() => inputRef.current?.focus()}
+      >
         <TextInput
+          ref={inputRef}
           value={searchQuery}
           placeholder="Search by title..."
           placeholderTextColor="#9EA5B1"
           style={homePagestyles.searchInput}
           onChangeText={(text) => setSearchQuery(text)}
         />
-        <Ionicons name="search-outline" size={20} color="#5B96E1" />
-      </View>
+
+        {searchQuery.length > 0 ? (
+          <Pressable onPress={handleClearSearch} hitSlop={10}>
+            <Ionicons name="close-circle" size={20} color="#5B96E1" />
+          </Pressable>
+        ) : (
+          <Ionicons name="search-outline" size={20} color="#5B96E1" />
+        )}
+      </Pressable>
 
       <Text>HomePage</Text>
     </SafeAreaView>
