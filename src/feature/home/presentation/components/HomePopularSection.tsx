@@ -4,13 +4,13 @@ import AppColors from "@/src/shared/theme/appColors";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import {
-    FlatList,
-    ImageBackground,
-    ImageSourcePropType,
-    StyleSheet,
-    Text,
-    View,
+  ImageBackground,
+  ImageSourcePropType,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
 
 interface CardItem {
   id: string;
