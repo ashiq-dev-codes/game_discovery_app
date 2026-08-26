@@ -128,8 +128,13 @@ const styles = StyleSheet.create({
   },
   titleCard: {
     padding: 9,
+    elevation: 6,
+    shadowRadius: 16,
     borderRadius: 16,
+    shadowOpacity: 0.77,
     alignItems: "center",
+    shadowColor: AppColors.whiteColor,
+    shadowOffset: { width: 0, height: 4 },
     backgroundColor: AppColors.whiteColor,
   },
   titleCardText: {
