@@ -19,6 +19,8 @@ interface CardItem {
   isFavorite: boolean;
 }
 
+const CARD_HEIGHT = 240;
+
 const POPULAR_DATA: CardItem[] = [
   {
     id: "1",
@@ -74,6 +76,7 @@ const HomePopularSection = () => {
         <FlatList
           horizontal
           data={POPULAR_DATA}
+          style={styles.list}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
           showsHorizontalScrollIndicator={false}
@@ -109,17 +112,20 @@ const styles = StyleSheet.create({
   popularBoxContent: {
     marginTop: 10,
   },
+  list: {
+    height: CARD_HEIGHT,
+  },
   listContainer: {
     gap: 16,
-    paddingHorizontal: 30,
+    paddingHorizontal: 18,
   },
   cardContainer: {
     flex: 1,
     width: 170,
     padding: 8,
-    height: 240,
     borderWidth: 2,
     borderRadius: 18,
+    height: CARD_HEIGHT,
     borderColor: "transparent",
     justifyContent: "space-between",
   },
