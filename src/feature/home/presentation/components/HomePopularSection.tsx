@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     elevation: 6,
     shadowRadius: 16,
     borderRadius: 16,
-    shadowOpacity: 0.77,
+    shadowOpacity: 0.55,
     alignItems: "center",
     shadowColor: AppColors.whiteColor,
     shadowOffset: { width: 0, height: 4 },
