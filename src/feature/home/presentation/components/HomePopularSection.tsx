@@ -49,12 +49,16 @@ const HomePopularSection = () => {
           style={styles.cardContainer}
           imageStyle={{ borderRadius: 18 }}
         >
-          <Ionicons
-            name="heart"
-            size={18}
-            color={item.isFavorite ? "#FF4B4B" : "#FFFFFF"}
-          />
-          <Text>{item.title}</Text>
+          <View style={styles.heartIcon}>
+            <Ionicons
+              name="heart"
+              size={18}
+              color={item.isFavorite ? "#FF4B4B" : "#FFFFFF"}
+            />
+          </View>
+          <View style={styles.titleCard}>
+            <Text style={styles.titleCardText}>{item.title}</Text>
+          </View>
         </ImageBackground>
       </View>
     );
@@ -110,10 +114,27 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
   },
   cardContainer: {
+    flex: 1,
     width: 170,
+    padding: 8,
     height: 240,
     borderWidth: 2,
     borderRadius: 18,
     borderColor: "transparent",
+    justifyContent: "space-between",
+  },
+  heartIcon: {
+    alignItems: "flex-end",
+  },
+  titleCard: {
+    padding: 9,
+    borderRadius: 16,
+    alignItems: "center",
+    backgroundColor: AppColors.whiteColor,
+  },
+  titleCardText: {
+    fontSize: 12,
+    color: AppColors.blackColor,
+    fontFamily: AppFonts.nunitoBold.name,
   },
 });
