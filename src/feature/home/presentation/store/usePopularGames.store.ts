@@ -28,7 +28,7 @@ const INITIAL_GAMES: PopularGameModel[] = [
 const fetchPopularGamesMock = (): Promise<PopularGameModel[]> =>
     new Promise((resolve, reject) =>
         setTimeout(() => {
-            if (Math.random() < 0.3) {
+            if (Math.random() < 0.1) {
                 reject(new Error("Unable to load popular games. Please try again."));
             } else {
                 resolve(INITIAL_GAMES);

@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import React, { useRef, useState } from "react";
 import { Image, Pressable, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import HomeMostPlayedSection from "../components/HomeMostPlayedSection";
 import HomePopularSection from "../components/HomePopularSection";
 import homePagestyles from "../style/homePage.styles";
 
@@ -60,7 +61,8 @@ const HomePage = () => {
         {/* Home Popular */}
         <HomePopularSection />
 
-        <Text>HomePage</Text>
+        {/* Home Most Played */}
+        <HomeMostPlayedSection />
       </SafeAreaView>
     </DismissKeyboardView>
   );
