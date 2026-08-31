@@ -7,6 +7,9 @@ const homePagestyles = StyleSheet.create({
         flex: 1,
         backgroundColor: "white",
     },
+    scrollContent: {
+        paddingBottom: 30,
+    },
     appBar: {
         paddingVertical: 5,
         alignItems: "center",
