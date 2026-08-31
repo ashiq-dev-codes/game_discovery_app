@@ -2,8 +2,9 @@ import { PopularGameModel } from "@/src/core/model/popular/popularGame.model";
 import AppFonts from "@/src/shared/path/appFonts";
 import AppColors from "@/src/shared/theme/appColors";
 import { Ionicons } from "@expo/vector-icons";
-import React from "react";
+import React, { useEffect } from "react";
 import {
+  ActivityIndicator,
   ImageBackground,
   StyleSheet,
   Text,
@@ -11,13 +12,21 @@ import {
   View,
 } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
+import { PopularGamesStatus } from "../store/usePopularGames.state";
 import { usePopularGamesStore } from "../store/usePopularGames.store";
 
 const CARD_HEIGHT = 240;
 
 const HomePopularSection = () => {
   const games = usePopularGamesStore((state) => state.games);
+  const status = usePopularGamesStore((state) => state.status);
+  const fetchGames = usePopularGamesStore((state) => state.fetchGames);
+  const errorMessage = usePopularGamesStore((state) => state.errorMessage);
   const toggleFavorite = usePopularGamesStore((state) => state.toggleFavorite);
+
+  useEffect(() => {
+    fetchGames();
+  }, [fetchGames]);
 
   const renderItem = ({
     item,
@@ -54,23 +63,59 @@ const HomePopularSection = () => {
     );
   };
 
+  const renderContent = () => {
+    if (
+      status === PopularGamesStatus.Loading ||
+      status === PopularGamesStatus.Initial
+    ) {
+      return (
+        <View style={styles.stateContainer}>
+          <ActivityIndicator size="large" color={AppColors.skyBlueColor} />
+        </View>
+      );
+    }
+
+    if (status === PopularGamesStatus.Failure) {
+      return (
+        <View style={styles.stateContainer}>
+          <Text style={styles.errorText}>
+            {errorMessage ?? "Something went wrong"}
+          </Text>
+          <TouchableOpacity activeOpacity={0.7} onPress={fetchGames}>
+            <Text style={styles.retryText}>Tap to retry</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+
+    if (games.length === 0) {
+      return (
+        <View style={styles.stateContainer}>
+          <Text style={styles.emptyText}>No popular games found</Text>
+        </View>
+      );
+    }
+
+    return (
+      <FlatList
+        horizontal
+        data={games}
+        style={styles.list}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.listContainer}
+      />
+    );
+  };
+
   return (
     <View style={styles.popularBox}>
       <View style={styles.popularBoxHeader}>
         <Text style={styles.popularBoxHeaderTitle}>Popular</Text>
         <Text style={styles.popularBoxHeaderSeeAll}>See All</Text>
       </View>
-      <View style={styles.popularBoxContent}>
-        <FlatList
-          horizontal
-          data={games}
-          style={styles.list}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.listContainer}
-        />
-      </View>
+      <View style={styles.popularBoxContent}>{renderContent()}</View>
     </View>
   );
 };
@@ -134,6 +179,29 @@ const styles = StyleSheet.create({
   titleCardText: {
     fontSize: 12,
     color: AppColors.blackColor,
+    fontFamily: AppFonts.nunitoBold.name,
+  },
+  stateContainer: {
+    height: CARD_HEIGHT,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 30,
+  },
+  errorText: {
+    fontSize: 14,
+    textAlign: "center",
+    color: AppColors.error600,
+    fontFamily: AppFonts.nunitoBold.name,
+  },
+  retryText: {
+    fontSize: 14,
+    marginTop: 10,
+    color: AppColors.skyBlueColor,
+    fontFamily: AppFonts.nunitoBold.name,
+  },
+  emptyText: {
+    fontSize: 14,
+    color: AppColors.gray600,
     fontFamily: AppFonts.nunitoBold.name,
   },
 });
