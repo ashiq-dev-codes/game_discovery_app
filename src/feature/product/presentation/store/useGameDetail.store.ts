@@ -23,11 +23,11 @@ const GAME_DETAILS: Record<string, GameDetailModel> = {
 const fetchGameDetailMock = (id: string): Promise<GameDetailModel> =>
     new Promise((resolve, reject) =>
         setTimeout(() => {
-            if (Math.random() < 0.1) {
-                reject(new Error("Unable to load game details. Please try again."));
-            } else {
-                resolve(GAME_DETAILS[id] ?? GAME_DETAILS["1"]);
-            }
+            // if (Math.random() < 0.3) {
+            //     reject(new Error("Unable to load game details. Please try again."));
+            // } else {
+            // }
+            resolve(GAME_DETAILS[id] ?? GAME_DETAILS["1"]);
         }, 1200)
     );
 

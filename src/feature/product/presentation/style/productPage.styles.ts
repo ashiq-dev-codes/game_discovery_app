@@ -18,8 +18,8 @@ const productPageStyles = StyleSheet.create({
     coverImage: {
         width: "100%",
         height: "100%",
-        borderBottomLeftRadius: 32,
-        borderBottomRightRadius: 32,
+        borderBottomLeftRadius: 33,
+        borderBottomRightRadius: 33,
     },
     backButton: {
         left: 20,
@@ -39,21 +39,18 @@ const productPageStyles = StyleSheet.create({
     },
     title: {
         fontSize: 28,
-        textAlign: "center",
         color: AppColors.blackColor,
         fontFamily: AppFonts.poppinsBold.name,
     },
     metaRow: {
-        gap: 6,
+        gap: 3,
         marginTop: 12,
-        alignItems: "center",
         flexDirection: "row",
-        justifyContent: "center",
     },
     metaText: {
         fontSize: 13,
-        color: AppColors.gray600,
-        fontFamily: AppFonts.nunitoSemiBold.name,
+        color: AppColors.blackColor,
+        fontFamily: AppFonts.poppinsRegular.name,
     },
     sectionHeading: {
         fontSize: 20,
@@ -65,8 +62,8 @@ const productPageStyles = StyleSheet.create({
         fontSize: 14,
         marginTop: 10,
         lineHeight: 21,
-        color: AppColors.gray600,
-        fontFamily: AppFonts.nunitoSemiBold.name,
+        color: AppColors.blackColor,
+        fontFamily: AppFonts.poppinsRegular.name,
     },
 
     // Info card

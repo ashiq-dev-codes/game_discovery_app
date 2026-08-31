@@ -34,7 +34,8 @@ const ProductPage = () => {
     if (id) {
       fetchGameDetail(id);
     }
-  }, [id, fetchGameDetail]);
+  }, []);
+  // }, [id, fetchGameDetail]);
 
   if (
     status === GameDetailStatus.Loading ||
