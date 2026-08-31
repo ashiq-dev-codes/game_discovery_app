@@ -1,49 +1,31 @@
+import { PopularGameModel } from "@/src/core/model/popular/popularGame.model";
 import AppFonts from "@/src/shared/path/appFonts";
-import AppImages from "@/src/shared/path/appImages";
 import AppColors from "@/src/shared/theme/appColors";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import {
   ImageBackground,
-  ImageSourcePropType,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
-
-interface CardItem {
-  id: string;
-  title: string;
-  image: ImageSourcePropType;
-  isFavorite: boolean;
-}
+import { usePopularGamesStore } from "../store/usePopularGames.store";
 
 const CARD_HEIGHT = 240;
 
-const POPULAR_DATA: CardItem[] = [
-  {
-    id: "1",
-    title: "The Last Of Us Part I",
-    image: AppImages.popularGame1, // Replace with your image paths
-    isFavorite: false,
-  },
-  {
-    id: "2",
-    title: "The Last Of Us Part II",
-    image: AppImages.popularGame2,
-    isFavorite: true,
-  },
-  {
-    id: "3",
-    title: "Uncharted 4",
-    image: AppImages.popularGame3,
-    isFavorite: false,
-  },
-];
-
 const HomePopularSection = () => {
-  const renderItem = ({ item, index }: { item: CardItem; index: number }) => {
+  const games = usePopularGamesStore((state) => state.games);
+  const toggleFavorite = usePopularGamesStore((state) => state.toggleFavorite);
+
+  const renderItem = ({
+    item,
+    index,
+  }: {
+    item: PopularGameModel;
+    index: number;
+  }) => {
     return (
       <View>
         <ImageBackground
@@ -52,11 +34,17 @@ const HomePopularSection = () => {
           imageStyle={{ borderRadius: 18 }}
         >
           <View style={styles.heartIcon}>
-            <Ionicons
-              name="heart"
-              size={18}
-              color={item.isFavorite ? "#FF4B4B" : "#FFFFFF"}
-            />
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => toggleFavorite(item.id)}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+            >
+              <Ionicons
+                name="heart"
+                size={18}
+                color={item.isFavorite ? "#FF4B4B" : "#FFFFFF"}
+              />
+            </TouchableOpacity>
           </View>
           <View style={styles.titleCard}>
             <Text style={styles.titleCardText}>{item.title}</Text>
@@ -75,7 +63,7 @@ const HomePopularSection = () => {
       <View style={styles.popularBoxContent}>
         <FlatList
           horizontal
-          data={POPULAR_DATA}
+          data={games}
           style={styles.list}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
