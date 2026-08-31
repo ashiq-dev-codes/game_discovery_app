@@ -3,6 +3,7 @@ import AppFonts from "@/src/shared/path/appFonts";
 import AppImages from "@/src/shared/path/appImages";
 import AppColors from "@/src/shared/theme/appColors";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
@@ -34,8 +35,15 @@ const MOST_PLAYED_GAMES: MostPlayedGameModel[] = [
 ];
 
 const HomeMostPlayedSection = () => {
+  const router = useRouter();
+
   const renderItem = (item: MostPlayedGameModel) => (
-    <View key={item.id} style={styles.card}>
+    <TouchableOpacity
+      key={item.id}
+      style={styles.card}
+      activeOpacity={0.85}
+      onPress={() => router.push(`/product/${item.id}`)}
+    >
       <Image source={item.image} style={styles.cardImage} />
       <View style={styles.cardInfo}>
         <Text style={styles.cardTitle} numberOfLines={1}>
@@ -52,10 +60,14 @@ const HomeMostPlayedSection = () => {
           <Text style={styles.metaText}>{item.duration}</Text>
         </View>
       </View>
-      <TouchableOpacity activeOpacity={0.7} style={styles.playButton}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={styles.playButton}
+        onPress={() => router.push(`/product/${item.id}`)}
+      >
         <Text style={styles.playButtonText}>Play</Text>
       </TouchableOpacity>
-    </View>
+    </TouchableOpacity>
   );
 
   return (

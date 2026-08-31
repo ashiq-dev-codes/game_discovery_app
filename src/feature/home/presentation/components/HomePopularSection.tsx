@@ -2,6 +2,7 @@ import { PopularGameModel } from "@/src/core/model/popular/popularGame.model";
 import AppFonts from "@/src/shared/path/appFonts";
 import AppColors from "@/src/shared/theme/appColors";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import React, { useEffect } from "react";
 import {
   ActivityIndicator,
@@ -18,6 +19,7 @@ import { usePopularGamesStore } from "../store/usePopularGames.store";
 const CARD_HEIGHT = 240;
 
 const HomePopularSection = () => {
+  const router = useRouter();
   const games = usePopularGamesStore((state) => state.games);
   const status = usePopularGamesStore((state) => state.status);
   const fetchGames = usePopularGamesStore((state) => state.fetchGames);
@@ -36,7 +38,10 @@ const HomePopularSection = () => {
     index: number;
   }) => {
     return (
-      <View>
+      <TouchableOpacity
+        activeOpacity={0.85}
+        onPress={() => router.push(`/product/${item.id}`)}
+      >
         <ImageBackground
           source={item.image}
           style={styles.cardContainer}
@@ -59,7 +64,7 @@ const HomePopularSection = () => {
             <Text style={styles.titleCardText}>{item.title}</Text>
           </View>
         </ImageBackground>
-      </View>
+      </TouchableOpacity>
     );
   };
 
